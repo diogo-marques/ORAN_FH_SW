@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="xemacps_example_intr_dma_2" location="/home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/xemacps_example_intr_dma_2" platform="/home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/sw_sdnet_platform/export/sw_sdnet_platform/sw_sdnet_platform.xpfm" platformUID="xilinx:zcu102::0.0(custom)" systemProject="xemacps_example_intr_dma_2_system" sysConfig="sw_sdnet_platform" runtime="C/C++" cpu="standalone_domain" cpuInstance="psu_cortexa53_0" os="standalone" mssSignature="d74cd53c05878f644252c90b5b161f9a">
+  <configuration name="Debug" id="xilinx.gnu.arm.a53.exe.debug.1815385667">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.arm.a53.exe.release.1328492758">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

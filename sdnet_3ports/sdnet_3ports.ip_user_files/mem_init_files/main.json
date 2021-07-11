@@ -1,0 +1,1364 @@
+{
+  "program" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+  "__meta__" : {
+    "version" : [3, 0],
+    "compiler" : "p4c-sdnet"
+  },
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "is_struct" : false,
+      "fields" : [
+        ["tmp", 1, false],
+        ["tmp_0", 32, false],
+        ["_padding", 7, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata_t",
+      "id" : 1,
+      "is_struct" : true,
+      "fields" : [
+        ["drop", 1, false],
+        ["ingress_timestamp", 64, false],
+        ["parser_error", 3, false],
+        ["_padding_0", 4, false]
+      ]
+    },
+    {
+      "name" : "eth_mac_t",
+      "id" : 2,
+      "is_struct" : false,
+      "fields" : [
+        ["dmac", 48, false],
+        ["smac", 48, false],
+        ["type", 16, false]
+      ]
+    },
+    {
+      "name" : "ipv4_t",
+      "id" : 3,
+      "is_struct" : false,
+      "fields" : [
+        ["version", 4, false],
+        ["hdr_len", 4, false],
+        ["tos", 8, false],
+        ["length", 16, false],
+        ["id", 16, false],
+        ["flags", 3, false],
+        ["offset", 13, false],
+        ["ttl", 8, false],
+        ["protocol", 8, false],
+        ["hdr_chk", 16, false],
+        ["src", 32, false],
+        ["dst", 32, false]
+      ]
+    },
+    {
+      "name" : "ipv4_opt_t",
+      "id" : 4,
+      "is_struct" : false,
+      "fields" : [
+        ["options", "*"]
+      ],
+      "max_length" : 40
+    },
+    {
+      "name" : "udp_t",
+      "id" : 5,
+      "is_struct" : false,
+      "fields" : [
+        ["src_port", 16, false],
+        ["dst_port", 16, false],
+        ["length", 16, false],
+        ["checksum", 16, false]
+      ]
+    },
+    {
+      "name" : "ecpri_t",
+      "id" : 6,
+      "is_struct" : false,
+      "fields" : [
+        ["protocol_rev", 4, false],
+        ["reserved", 3, false],
+        ["c", 1, false],
+        ["message_type", 8, false],
+        ["payload_size", 16, false]
+      ]
+    },
+    {
+      "name" : "roe_t",
+      "id" : 7,
+      "is_struct" : false,
+      "fields" : [
+        ["RoEsubType", 8, false],
+        ["RoEflowId", 8, false],
+        ["RoElength", 16, false],
+        ["RoEorderInfo", 32, false]
+      ]
+    },
+    {
+      "name" : "vlan_t",
+      "id" : 8,
+      "is_struct" : false,
+      "fields" : [
+        ["pcp", 3, false],
+        ["cfi", 1, false],
+        ["vid", 12, false],
+        ["tpid", 16, false]
+      ]
+    },
+    {
+      "name" : "metadata",
+      "id" : 9,
+      "is_struct" : true,
+      "fields" : [
+        ["axis_tdest", 32, false],
+        ["axis_tid", 8, false]
+      ]
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "scalars",
+      "id" : 0,
+      "header_type" : "scalars_0",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata_t",
+      "id" : 1,
+      "header_type" : "standard_metadata_t",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "eth",
+      "id" : 2,
+      "header_type" : "eth_mac_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4",
+      "id" : 3,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4opt",
+      "id" : 4,
+      "header_type" : "ipv4_opt_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "udp",
+      "id" : 5,
+      "header_type" : "udp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ecpri",
+      "id" : 6,
+      "header_type" : "ecpri_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "roe",
+      "id" : 7,
+      "header_type" : "roe_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "vlan[0]",
+      "id" : 8,
+      "header_type" : "vlan_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "vlan[1]",
+      "id" : 9,
+      "header_type" : "vlan_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "metadata",
+      "id" : 10,
+      "header_type" : "metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [
+    {
+      "name" : "vlan",
+      "id" : 0,
+      "header_type" : "vlan_t",
+      "size" : 2,
+      "header_ids" : [8, 9]
+    }
+  ],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [],
+  "errors" : [
+    ["NoError", 0],
+    ["PacketTooShort", 1],
+    ["NoMatch", 2],
+    ["StackOutOfBounds", 3],
+    ["HeaderTooShort", 4],
+    ["ParserTimeout", 5],
+    ["HeaderDepthLimitExceeded", 6],
+    ["InvalidIPpacket", 7]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "start",
+          "id" : 0,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "eth"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x8100",
+              "mask" : null,
+              "next_state" : "parse_vlan"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xaefe",
+              "mask" : null,
+              "next_state" : "parse_ecpri"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xfc3d",
+              "mask" : null,
+              "next_state" : "parse_roe"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["eth", "type"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_vlan",
+          "id" : 1,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "stack",
+                  "value" : "vlan"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x8100",
+              "mask" : null,
+              "next_state" : "parse_vlan"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xaefe",
+              "mask" : null,
+              "next_state" : "parse_ecpri"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xfc3d",
+              "mask" : null,
+              "next_state" : "parse_roe"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "stack_field",
+              "value" : ["vlan", "tpid"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv4",
+          "id" : 2,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "tmp"]
+                },
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "b2d",
+                      "left" : null,
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "and",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "==",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["ipv4", "version"]
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x04"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : ">=",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["ipv4", "hdr_len"]
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x05"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "op" : "set"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "op" : "d2b",
+                    "left" : null,
+                    "right" : {
+                      "type" : "field",
+                      "value" : ["scalars", "tmp"]
+                    }
+                  }
+                },
+                {
+                  "type" : "hexstr",
+                  "value" : "0x7"
+                }
+              ],
+              "op" : "verify"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "tmp_0"]
+                },
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "<<",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "+",
+                                  "left" : {
+                                    "type" : "expression",
+                                    "value" : {
+                                      "op" : "&",
+                                      "left" : {
+                                        "type" : "field",
+                                        "value" : ["ipv4", "hdr_len"]
+                                      },
+                                      "right" : {
+                                        "type" : "hexstr",
+                                        "value" : "0xffffffff"
+                                      }
+                                    }
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xfffffffb"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xffffffff"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0x5"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffffffff"
+                      }
+                    }
+                  }
+                }
+              ],
+              "op" : "set"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4opt"
+                },
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "type" : "field",
+                    "value" : ["scalars", "tmp_0"]
+                  }
+                }
+              ],
+              "op" : "extract_VL"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x11",
+              "mask" : null,
+              "next_state" : "parse_udp"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_udp",
+          "id" : 3,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "udp"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "parse_ecpri",
+          "id" : 4,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ecpri"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "parse_roe",
+          "id" : 5,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "roe"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        }
+      ]
+    }
+  ],
+  "parse_vsets" : [],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+        "line" : 212,
+        "column" : 8,
+        "source_fragment" : "MyDeparser"
+      },
+      "start" : "node_96",
+      "emits" : [
+        {
+          "name" : "node_96",
+          "id" : 0,
+          "sequence_point" : true,
+          "header" : "eth",
+          "next" : "node_97"
+        },
+        {
+          "name" : "node_97",
+          "id" : 1,
+          "sequence_point" : true,
+          "header" : "vlan[0]",
+          "next" : "node_98"
+        },
+        {
+          "name" : "node_98",
+          "id" : 2,
+          "sequence_point" : true,
+          "header" : "vlan[1]",
+          "next" : "node_99"
+        },
+        {
+          "name" : "node_99",
+          "id" : 3,
+          "sequence_point" : true,
+          "header" : "ipv4",
+          "next" : "node_100"
+        },
+        {
+          "name" : "node_100",
+          "id" : 4,
+          "sequence_point" : true,
+          "header" : "ipv4opt",
+          "next" : "node_101"
+        },
+        {
+          "name" : "node_101",
+          "id" : 5,
+          "sequence_point" : true,
+          "header" : "udp",
+          "next" : "node_102"
+        },
+        {
+          "name" : "node_102",
+          "id" : 6,
+          "sequence_point" : true,
+          "header" : "ecpri",
+          "next" : "node_103"
+        },
+        {
+          "name" : "node_103",
+          "id" : 7,
+          "sequence_point" : true,
+          "header" : "roe",
+          "next" : null
+        }
+      ],
+      "conditionals" : []
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [],
+  "register_arrays" : [],
+  "calculations" : [],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "act",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["metadata", "axis_tdest"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 187,
+            "column" : 24,
+            "source_fragment" : "meta.axis_tdest = 0x00000001"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_0",
+      "id" : 1,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["metadata", "axis_tdest"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 189,
+            "column" : 24,
+            "source_fragment" : "meta.axis_tdest = 0x00000000"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_1",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["metadata", "axis_tdest"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 194,
+            "column" : 24,
+            "source_fragment" : "meta.axis_tdest = 0x00000001"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_2",
+      "id" : 3,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["metadata", "axis_tdest"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 196,
+            "column" : 24,
+            "source_fragment" : "meta.axis_tdest = 0x00000000"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_3",
+      "id" : 4,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["metadata", "axis_tdest"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000002"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 200,
+            "column" : 8,
+            "source_fragment" : "meta.axis_tdest = 0x00000002"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_4",
+      "id" : 5,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["metadata", "axis_tdest"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 202,
+            "column" : 8,
+            "source_fragment" : "meta.axis_tdest = 0x00000000"
+          }
+        }
+      ]
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+        "line" : 179,
+        "column" : 8,
+        "source_fragment" : "MyProcessing"
+      },
+      "init_table" : "node_80",
+      "tables" : [
+        {
+          "name" : "tbl_act",
+          "id" : 0,
+          "sequence_point" : false,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [0],
+          "actions" : ["act"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "act" : null
+          },
+          "default_entry" : {
+            "action_id" : 0,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_0",
+          "id" : 1,
+          "sequence_point" : false,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [1],
+          "actions" : ["act_0"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "act_0" : null
+          },
+          "default_entry" : {
+            "action_id" : 1,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_1",
+          "id" : 2,
+          "sequence_point" : false,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [2],
+          "actions" : ["act_1"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "act_1" : null
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_2",
+          "id" : 3,
+          "sequence_point" : false,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [3],
+          "actions" : ["act_2"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "act_2" : null
+          },
+          "default_entry" : {
+            "action_id" : 3,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_3",
+          "id" : 4,
+          "sequence_point" : false,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [4],
+          "actions" : ["act_3"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "act_3" : null
+          },
+          "default_entry" : {
+            "action_id" : 4,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_4",
+          "id" : 5,
+          "sequence_point" : false,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5],
+          "actions" : ["act_4"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "act_4" : null
+          },
+          "default_entry" : {
+            "action_id" : 5,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_80",
+          "id" : 0,
+          "sequence_point" : true,
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 185,
+            "column" : 16,
+            "source_fragment" : "hdr.ecpri.isValid() && (hdr.ecpri.message_type == 0x0 || hdr.ecpri.message_type == 0x2 || hdr.ecpri.message_type == 0x5 )"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["ecpri", "$valid$"]
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "or",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "or",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "==",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["ecpri", "message_type"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0x00"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "==",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["ecpri", "message_type"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0x02"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "==",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ecpri", "message_type"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x05"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "node_81",
+          "false_next" : "node_85",
+          "if_else" : true,
+          "converge" : null
+        },
+        {
+          "name" : "node_81",
+          "id" : 1,
+          "sequence_point" : false,
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 186,
+            "column" : 23,
+            "source_fragment" : "meta.axis_tid == 0x00"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["metadata", "axis_tid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "tbl_act",
+          "false_next" : "node_83",
+          "if_else" : true,
+          "converge" : null
+        },
+        {
+          "name" : "node_83",
+          "id" : 2,
+          "sequence_point" : false,
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 188,
+            "column" : 29,
+            "source_fragment" : "meta.axis_tid == 0x01"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["metadata", "axis_tid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_act_0",
+          "if_else" : false,
+          "converge" : null
+        },
+        {
+          "name" : "node_85",
+          "id" : 3,
+          "sequence_point" : false,
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 192,
+            "column" : 18,
+            "source_fragment" : "hdr.roe.isValid() && (hdr.roe.RoEsubType == 128 || hdr.roe.RoEsubType == 129 || hdr.roe.RoEsubType == 130 || hdr.roe.RoEsubType == 131 )"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["roe", "$valid$"]
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "or",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "or",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "or",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "==",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["roe", "RoEsubType"]
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x80"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "==",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["roe", "RoEsubType"]
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x81"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "==",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["roe", "RoEsubType"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0x82"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "==",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["roe", "RoEsubType"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x83"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "node_86",
+          "false_next" : "node_90",
+          "if_else" : true,
+          "converge" : null
+        },
+        {
+          "name" : "node_86",
+          "id" : 4,
+          "sequence_point" : false,
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 193,
+            "column" : 23,
+            "source_fragment" : "meta.axis_tid == 0x00"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["metadata", "axis_tid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "tbl_act_1",
+          "false_next" : "node_88",
+          "if_else" : true,
+          "converge" : null
+        },
+        {
+          "name" : "node_88",
+          "id" : 5,
+          "sequence_point" : false,
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 195,
+            "column" : 29,
+            "source_fragment" : "meta.axis_tid == 0x01"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["metadata", "axis_tid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_act_2",
+          "if_else" : false,
+          "converge" : null
+        },
+        {
+          "name" : "node_90",
+          "id" : 6,
+          "sequence_point" : false,
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 199,
+            "column" : 16,
+            "source_fragment" : "meta.axis_tid == 0x00"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["metadata", "axis_tid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x00"
+              }
+            }
+          },
+          "true_next" : "tbl_act_3",
+          "false_next" : "node_92",
+          "if_else" : true,
+          "converge" : null
+        },
+        {
+          "name" : "node_92",
+          "id" : 7,
+          "sequence_point" : false,
+          "source_info" : {
+            "filename" : "/home/dmarques/tese/p4sdnet/echo/oran.p4",
+            "line" : 201,
+            "column" : 16,
+            "source_fragment" : "meta.axis_tid == 0x02"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["metadata", "axis_tid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x02"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_act_4",
+          "if_else" : false,
+          "converge" : null
+        }
+      ]
+    }
+  ],
+  "checksums" : [],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "field_aliases" : []
+}

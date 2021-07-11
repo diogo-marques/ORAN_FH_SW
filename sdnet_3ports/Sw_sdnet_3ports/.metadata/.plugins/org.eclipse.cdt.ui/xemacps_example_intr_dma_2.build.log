@@ -1,0 +1,37 @@
+11:56:15 **** Build of configuration Debug for project xemacps_example_intr_dma_2 ****
+make all 
+Building file: ../src/xemacps_example_intr_dma.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xemacps_example_intr_dma.o" -I/home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/sw_sdnet_platform/export/sw_sdnet_platform/sw/sw_sdnet_platform/standalone_domain/bspinclude/include -MMD -MP -MF"src/xemacps_example_intr_dma.d" -MT"src/xemacps_example_intr_dma.o" -o "src/xemacps_example_intr_dma.o" "../src/xemacps_example_intr_dma.c"
+../src/xemacps_example_intr_dma.c: In function 'EmacPsDmaIntrExample':
+../src/xemacps_example_intr_dma.c:714:15: warning: unused variable 'frames_tx' [-Wunused-variable]
+  714 |  unsigned int frames_tx;
+      |               ^~~~~~~~~
+../src/xemacps_example_intr_dma.c:412:13: warning: unused variable 'BdTemplate' [-Wunused-variable]
+  412 |  XEmacPs_Bd BdTemplate;
+      |             ^~~~~~~~~~
+Finished building: ../src/xemacps_example_intr_dma.c
+ 
+Building file: ../src/xemacps_example_util.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xemacps_example_util.o" -I/home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/sw_sdnet_platform/export/sw_sdnet_platform/sw/sw_sdnet_platform/standalone_domain/bspinclude/include -MMD -MP -MF"src/xemacps_example_util.d" -MT"src/xemacps_example_util.o" -o "src/xemacps_example_util.o" "../src/xemacps_example_util.c"
+../src/xemacps_example_util.c: In function 'EmacPsUtilTiPhyLoopback':
+../src/xemacps_example_util.c:494:20: warning: variable 'LoopbackSpeed' set but not used [-Wunused-but-set-variable]
+  494 |  u16 PhyReg0  = 0, LoopbackSpeed = 0;
+      |                    ^~~~~~~~~~~~~
+Finished building: ../src/xemacps_example_util.c
+ 
+Building target: xemacps_example_intr_dma_2.elf
+Invoking: ARM v8 gcc linker
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L/home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/sw_sdnet_platform/export/sw_sdnet_platform/sw/sw_sdnet_platform/standalone_domain/bsplib/lib -o "xemacps_example_intr_dma_2.elf"  ./src/xemacps_example_intr_dma.o ./src/xemacps_example_util.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: xemacps_example_intr_dma_2.elf
+ 
+Invoking: ARM v8 Print Size
+aarch64-none-elf-size xemacps_example_intr_dma_2.elf  |tee "xemacps_example_intr_dma_2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  55556	   5224	6312508	6373288	 613fa8	xemacps_example_intr_dma_2.elf
+Finished building: xemacps_example_intr_dma_2.elf.size
+ 
+
+11:56:16 Build Finished (took 663ms)
+

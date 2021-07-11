@@ -1,0 +1,10 @@
+16:54:34 **** Incremental Build of configuration Debug for project xemacps_example_intr_dma_1_system ****
+make all 
+Generating bif file for the system project
+Executing command '::scw::generate_bif -xpfm /home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/sdnet_platform_2/export/sdnet_platform_2/sdnet_platform_2.xpfm -domains standalone_domain -bifpath /home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/xemacps_example_intr_dma_1_system/Debug/system.bif' on XSCT
+sdcard_gen --xpfm /home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/sdnet_platform_2/export/sdnet_platform_2/sdnet_platform_2.xpfm --sys_config sdnet_platform_2 --bif /home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/xemacps_example_intr_dma_1_system/Debug/system.bif --bitstream /home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/xemacps_example_intr_dma_1/_ide/bitstream/mb_es_design_wrapper.bit --elf /home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/xemacps_example_intr_dma_1/Debug/xemacps_example_intr_dma_1.elf,psu_cortexa53_0
+creating BOOT.BIN using /home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/xemacps_example_intr_dma_1/_ide/bitstream/mb_es_design_wrapper.bit
+Running /tools/Xilinx/Vitis/2020.2/bin/bootgen -arch zynqmp -image /home/dmarques/tese/Vivado_projects/sdnet_3ports/Sw_sdnet_3ports/xemacps_example_intr_dma_1_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+
+16:54:41 Build Finished (took 7s.208ms)
+
